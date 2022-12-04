@@ -1,10 +1,16 @@
 package com.sahsa.rest.webservices.restfulwebservices.user;
 
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class User {
+
     private Integer id;
+    @Size(min = 2, max = 20, message = "name should be between 2 and 20 characters")
     private String name;
+    @Past(message = "birthday should be in the past")
     private LocalDate birthday;
 
     public Integer getId() {
