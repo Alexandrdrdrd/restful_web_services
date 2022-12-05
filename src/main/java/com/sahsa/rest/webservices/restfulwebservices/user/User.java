@@ -1,15 +1,20 @@
 package com.sahsa.rest.webservices.restfulwebservices.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
-
+@Entity(name = "user_details")
 public class User {
 
+    @Id
+    @GeneratedValue
     private Integer id;
     @Size(min = 2, max = 20, message = "name should be between 2 and 20 characters")
     @JsonProperty("user_name")
@@ -45,6 +50,9 @@ public class User {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
+    }
+
+    public User() {
     }
 
     @Override
